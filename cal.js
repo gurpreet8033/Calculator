@@ -39,7 +39,7 @@ $(document).ready(()=>{
         var firstOperand=previousResult.text()
         var secondOperand=currentResult.text()
         currentResult.text(eval(firstOperand+secondOperand))
-        previousResult.text("")
+        previousResult.text(firstOperand+secondOperand+"=")
     }
 
     function processOperation(operand){
@@ -53,6 +53,9 @@ $(document).ready(()=>{
             else if(previousResult.text()==="" && (currentResult.text()==="" &&
                 (operand==='+' || operand==='-' || operand==='*' || operand==='/' || operand==='%')))
                 return
+            else if(previousResult.text().includes("=")){
+                previousResult.text(currentResult.text()+operand)
+            }
             else
                 previousResult.text(previousResult.text()+currentResult.text()+operand)
             currentResult.text("")
