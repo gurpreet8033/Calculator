@@ -3,12 +3,12 @@ $(document).ready(()=>{
     var previousResult = $("#previousresult")
     var numberBtn=$("button")
     numberBtn.click(function(){
-        var txtData=$(this).text()
+        var txtData=$(this).val()
         if (txtData==="+" || txtData=== "-" || txtData=== "/" || txtData=== "*" || txtData=== "%" )
             processOperation(txtData)
-        else if(txtData==="C") 
+        else if(txtData==="clear") 
             clearResult()
-        else if(txtData==="+/-")
+        else if(txtData==="negation")
             negateOperation()
         else if(txtData===".")
             decimalOperation()   
@@ -43,8 +43,17 @@ $(document).ready(()=>{
     }
 
     function processOperation(operand){
-        previousResult.text(previousResult.text()+currentResult.text()+operand)
-        currentResult.text("")
+        var prevResult=previousResult.text()
+        var lengthprev=prevResult.length
+        var lastChar=prevResult.charAt(lengthprev-1)
+        if(lastChar!=='+' && lastChar!=='*' && lastChar!=='-' && lastChar!=='/' || currentResult.text()!=="")
+        {
+            previousResult.text(previousResult.text()+currentResult.text()+operand)
+            currentResult.text("")
+        }
+        else
+            return
+            
     }
     function clearResult(){
         currentResult.text("")
