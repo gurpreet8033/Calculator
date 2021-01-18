@@ -50,6 +50,9 @@ $(document).ready(()=>{
         {
             if(currentResult.text().length===1 && currentResult.text()==='.')
                 previousResult.text(previousResult.text()+"0"+operand)
+            else if(previousResult.text()==="" && (currentResult.text()==="" &&
+                (operand==='+' || operand==='-' || operand==='*' || operand==='/' || operand==='%')))
+                return
             else
                 previousResult.text(previousResult.text()+currentResult.text()+operand)
             currentResult.text("")

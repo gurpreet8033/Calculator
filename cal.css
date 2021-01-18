@@ -40,7 +40,7 @@ body{
     grid-template-columns: repeat(4,100px);
     grid-template-rows: minmax(120px,auto) repeat(5,100px);
 }
-@media only screen and (max-width:600px){
+/* @media only screen and (max-width:600px){
     .calculator{
         display: grid;
         justify-content: center;
@@ -49,7 +49,7 @@ body{
         grid-template-columns: repeat(4,25%);
         grid-template-rows: minmax(120px,auto) repeat(5,20%);
     }
-}
+} */
 .calculator button{
     font-size: 2rem;
  
