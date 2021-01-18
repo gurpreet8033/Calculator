@@ -48,7 +48,10 @@ $(document).ready(()=>{
         var lastChar=prevResult.charAt(lengthprev-1)
         if(lastChar!=='+' && lastChar!=='*' && lastChar!=='-' && lastChar!=='/' || currentResult.text()!=="")
         {
-            previousResult.text(previousResult.text()+currentResult.text()+operand)
+            if(currentResult.text().length===1 && currentResult.text()==='.')
+                previousResult.text(previousResult.text()+"0"+operand)
+            else
+                previousResult.text(previousResult.text()+currentResult.text()+operand)
             currentResult.text("")
         }
         else
